@@ -1,5 +1,5 @@
 import basket_icon from './basket_icon.png'
-import logo from './logo.png'
+import logo from './foodly.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
@@ -43,6 +43,7 @@ import food_29 from './food_29.png'
 import food_30 from './food_30.png'
 import food_31 from './food_31.png'
 import food_32 from './food_32.png'
+
 
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
