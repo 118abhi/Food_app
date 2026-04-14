@@ -1,34 +1,40 @@
 import React, { useContext } from 'react'
 import './PlaceOrder.css'
 import { StoreContext } from '../../context/StoreContext'
+import { motion } from 'framer-motion'
 
 const PlaceOrder = () => {
 
     const {getTotalCartAmount} = useContext(StoreContext)
   return (
-    <div className="place-order">
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="place-order"
+    >
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
             <div className="multi-fields">
                 <input type="text" placeholder="First Name"/>
                 <input type="text" placeholder="Last Name"/>
             </div>
-            <input type="text" placeholder="Email Address" />
+            <input type="email" placeholder="Email Address" />
             <input type="text" placeholder="Street" />
             <div className="multi-fields">
                 <input type="text" placeholder="City"/>
                 <input type="text" placeholder="State"/>
-                <div className="multi-fields">
+            </div>
+            <div className="multi-fields">
                 <input type="text" placeholder="Zip Code"/>
                 <input type="text" placeholder="Country"/>
             </div>
-            <input type="text" placeholder="Phone" />
-            </div>
+            <input type="tel" placeholder="Phone" />
       </div>
       <div className="place-order-right">
       <div className="cart-total">
             <h2>Cart Totals</h2>
-            <div>
+            <div className="total-container">
                 <div className="cart-total-details">
                     <p>Subtotal</p>
                     <p>₹{getTotalCartAmount()}</p>
@@ -36,18 +42,23 @@ const PlaceOrder = () => {
                 <hr />
                 <div className="cart-total-details">
                     <p>Delivery Fee</p>
-                    <p>₹{2}</p>
+                    <p>₹{getTotalCartAmount() === 0 ? 0 : 2}</p>
                 </div>
                 <hr />
-                <div className="cart-total-details">
+                <div className="cart-total-details important">
                     <b>Total </b>
-                    <b>₹{getTotalCartAmount() + 2}</b>
+                    <b>₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
                 </div>
             </div>
-            <button>PROCEED TO PAYMENT</button>
+            <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+            >
+                PROCEED TO PAYMENT
+            </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
